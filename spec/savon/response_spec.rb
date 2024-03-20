@@ -257,6 +257,15 @@ RSpec.describe Savon::Response do
     Savon::Response.new(http_response, globals, locals)
   end
 
+  it "foo" do
+    response = soap_unknown_error_response
+    response.body
+  end
+
+  def soap_unknown_error_response
+    soap_response :code => 200, :body => Fixture.response(:soap_unknown_error)
+  end
+
   def soap_fault_response
     soap_response :code => 500, :body => Fixture.response(:soap_fault)
   end
